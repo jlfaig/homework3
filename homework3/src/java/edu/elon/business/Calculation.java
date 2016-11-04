@@ -7,6 +7,7 @@ package edu.elon.business;
 
 import java.io.Serializable;
 import java.text.NumberFormat;
+import org.apache.catalina.tribes.util.Arrays;
 
 public class Calculation implements Serializable{
     private double principal;
@@ -18,13 +19,19 @@ public class Calculation implements Serializable{
         principal = 0;
         rate = 0;
         years = 0;
-	yearCalcs = new double[years];
     }
     
     public Calculation(Double principal, Double rate, Integer years) {
         this.principal = principal;
         this.rate = rate;
         this.years = years;
+        this.yearCalcs = new double[years];
+    }
+    
+    @Override
+    public String toString() {
+        getFutureValue();
+        return "Principal is " + principal + ", rate is " + rate + ", years is " + years + ", first future value are" + yearCalcs[0];
     }
     
     public String getPrincipal() {
@@ -57,7 +64,6 @@ public class Calculation implements Serializable{
 	for (int i = 0;i < years; i++) {
 	  yearCalcs[i] = principal*Math.pow((1+newRate),i+1); 
 	}
-        NumberFormat currency = NumberFormat.getCurrencyInstance();
         return yearCalcs;
     }
 }

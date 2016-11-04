@@ -25,7 +25,8 @@ Copyright: 2016 Jenny Faig & Tyler LaVecchia
   <label class="yearColumn"><b>Year</b></label>
   <label class="valueColumn"><b>Value</b></label>
   <ul>
-  <c:forEach items="<jsp:getProperty name='calculation' property='futureValue'/>" var="value" varStatus="status">
+      <p>${calculation}</p>
+<c:forEach items="${calculation.futureValue}" var="value" varStatus="status">
     <li>${status.count}, ${value}</li>
   </c:forEach>
   </ul>
