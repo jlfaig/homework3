@@ -9,12 +9,26 @@ Copyright: 2016 Jenny Faig & Tyler LaVecchia
   <h1>Future Value Calculator</h1>
   <input type="hidden" name="action" value="add">
   <p>
-      <label class="amount">Investment Amount </label>
-      <input name="principal" type="number" min="0" autofocus required/>
+      <label class="amount">Investment Amount </label> 
+      <c:choose>
+          <c:when test="${calculation.principal != null}">
+            <input name="principal" type="number" min="0" value ="${calculation.principal}" autofocus/> 
+          </c:when>
+          <c:otherwise>
+            <input name="principal" type="number" min="0" autofocus required/>
+          </c:otherwise>
+      </c:choose>
   </p>
   <p>
       <label>Yearly Interest Rate </label>
-      <input name="rate" type="number" min="0" required/>
+       <c:choose>
+          <c:when test="${calculation.rate != null}">
+            <input name="rate" type="number" min="0" value ="${calculation.rate}" autofocus/> 
+          </c:when>
+          <c:otherwise>
+            <input name="rate" type="number" min="0" required/>
+          </c:otherwise>
+      </c:choose>
   </p>
   <p>
       <label class="numYears">Number of Years </label>

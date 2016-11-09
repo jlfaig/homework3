@@ -8,6 +8,11 @@
         <name>currencyFormat</name>
         <tag-class>edu.elon.tags.currencyFormatTag</tag-class>
         <body-content>empty</body-content>
+        <attribute>
+            <name>field</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
     </tag>
 
 </taglib>

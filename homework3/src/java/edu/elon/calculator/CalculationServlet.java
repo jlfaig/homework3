@@ -6,6 +6,7 @@ package edu.elon.calculator;
 
 import edu.elon.business.Calculation;
 import java.io.IOException;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,7 @@ public class CalculationServlet extends HttpServlet {
 	  throws ServletException, IOException {
 
     String url = "/form.jsp";
+    ServletContext session = this.getServletContext();
 
     String action = request.getParameter("action");
     if (action == null) {
@@ -47,7 +49,7 @@ public class CalculationServlet extends HttpServlet {
 	message = "";
 	url = "/return.jsp";
       }
-      request.setAttribute("calculation", calculation);
+      session.setAttribute("calculation", calculation);
       request.setAttribute("message", message);
     }
     getServletContext().getRequestDispatcher(url)
